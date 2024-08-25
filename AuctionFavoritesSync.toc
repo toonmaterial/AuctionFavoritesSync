@@ -1,0 +1,8 @@
+## Interface: 110002
+## Title: Auction Favorites Sync
+## Author: toonmaterial
+## Version: 1.0.0
+## SavedVariables: AuctionFavoritesSyncGDB
+## SavedVariablesPerCharacter: AuctionFavoritesSyncCDB
+
+AuctionFavoritesSync.lua
