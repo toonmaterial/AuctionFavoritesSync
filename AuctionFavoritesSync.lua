@@ -62,8 +62,8 @@ f:SetScript("OnEvent", function(_, event, ...)
 		local needRefresh = false
 
 		if cdb.sync then
-			for _, favorites in ipairs { gdb.favorites, cdb.favorites } do
-				for _, itemKey in pairs(favorites) do
+			for _, db in ipairs { gdb, cdb } do
+				for _, itemKey in pairs(db.favorites) do
 					needRefresh = sync(itemKey) or needRefresh
 				end
 			end
@@ -82,6 +82,11 @@ f:SetScript("OnEvent", function(_, event, ...)
 	if event == "AUCTION_HOUSE_CLOSED" then
 		cdb.sync = true
 		f:UnregisterAllEvents()
+		f:SetScript("OnEvent", nil)
+	end
+
+	if cdb.sync then
+		return
 	end
 
 	local function processItemKey(itemKey)
